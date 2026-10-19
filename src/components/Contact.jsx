@@ -1,19 +1,9 @@
-import { ExternalLink, Mail } from 'lucide-react'
 import { contacts } from '../data/links'
 
 /**
- * lucide-react (versi baru) tidak lagi menyediakan ikon brand seperti
- * Github/Linkedin — makanya tautan web pakai ikon external link.
+ * Tautan kontak kini tampil sebagai tombol logo saja (ikon 44×44px, sesuai
+ * ukuran minimum target sentuh). Label lengkap dipindah ke aria-label/tooltip.
  */
-const linkIcons = {
-  mailto: Mail,
-  web: ExternalLink,
-}
-
-function iconFor(href) {
-  return href.startsWith('mailto:') ? linkIcons.mailto : linkIcons.web
-}
-
 function Contact() {
   return (
     <section id="contact" className="scroll-mt-20 border-t border-line">
@@ -31,24 +21,27 @@ function Contact() {
           saya lewat salah satu tautan berikut:
         </p>
 
-        <ul className="mt-10 flex flex-col items-start gap-3 sm:flex-row sm:flex-wrap">
-          {contacts.map((contact) => {
-            const Icon = iconFor(contact.href)
-            return (
-              <li key={contact.href}>
-                <a
-                  href={contact.href}
-                  {...(contact.href.startsWith('http')
-                    ? { target: '_blank', rel: 'noreferrer' }
-                    : {})}
-                  className="inline-flex items-center gap-2.5 rounded-md border border-line px-4 py-2.5 text-sm transition-colors hover:border-accent hover:text-accent-hover"
-                >
-                  <Icon aria-hidden="true" size={16} />
-                  {contact.value}
-                </a>
-              </li>
-            )
-          })}
+        <ul className="mt-10 flex items-center gap-3">
+          {contacts.map((contact) => (
+            <li key={contact.href}>
+              <a
+                href={contact.href}
+                {...(contact.href.startsWith('http')
+                  ? { target: '_blank', rel: 'noreferrer' }
+                  : {})}
+                aria-label={`${contact.label} — ${contact.value}`}
+                title={`${contact.label} — ${contact.value}`}
+                className="inline-flex h-11 w-11 items-center justify-center rounded-md border border-line transition-colors hover:border-accent"
+              >
+                <img
+                  src={contact.logo}
+                  alt=""
+                  loading="lazy"
+                  className="h-5 w-5 object-contain"
+                />
+              </a>
+            </li>
+          ))}
         </ul>
       </div>
     </section>

@@ -10,16 +10,18 @@ import Footer from './components/Footer'
 function App() {
   return (
     <div className="relative min-h-screen overflow-hidden bg-atmosphere bg-base font-sans text-ink antialiased">
-      {/* Aurora — layer paling belakang, band cahaya di area atas laman */}
-      <div className="absolute inset-0" aria-hidden="true">
+      {/* Aurora — fixed, selalu memenuhi viewport, di belakang semua konten.
+          Konten bergulir di atasnya, band tetap di posisi layar yang sama. */}
+      <div className="fixed inset-0 pointer-events-none" aria-hidden="true">
         <SoftAurora
           color1="#166534"
           color2="#0f766e"
           spectrum={0}
           speed={0.3}
-          brightness={0.9}
-          bandHeight={0.75}
-          bandSpread={0.8}
+          brightness={0.7}
+          bandHeight={0.65}
+          tilt={-4}
+          bandSpread={0.7}
           scale={1.5}
           enableMouseInteraction={false}
           clickPulse={false}
