@@ -1,1 +1,91 @@
 @import "tailwindcss";
+
+/*
+  Tema desain (dark minimalist, satu aksen).
+
+  Semua kustomisasi Tailwind v4 dilakukan lewat @theme di sini,
+  sesuai PRD bagian 4 (tanpa tailwind.config.js / postcss.config.js).
+  Nama variabel berwarna dipakai sebagai utility Tailwind:
+  bg-base, bg-surface, text-ink, text-muted, border-line, text-accent, dst.
+*/
+@theme {
+  /* Font (Google Fonts, 2 family, di-load via <link> di index.html) */
+  --font-display: "Fraunces", Georgia, serif;   /* heading */
+  --font-sans: "Geist", system-ui, sans-serif;  /* body */
+
+  /* Palet gelap hangat */
+  --color-base: #131511;      /* background utama */
+  --color-surface: #1a1d18;   /* panel/kartu kalau perlu, tetap senada */
+  --color-ink: #f2f1ea;       /* teks utama (off-white hangat, bukan #000/#fff murni) */
+  --color-muted: #9b9e93;     /* teks sekunder */
+  --color-line: #272a24;      /* garis tipis 1px sebagai pemisah */
+
+  /* Satu warna aksen: forest green (diterangkan supaya kontras di bg gelap) */
+  --color-accent: #7fb97f;
+  --color-accent-hover: #a3d1a0;
+}
+
+/* Global styles sederhana — selebihnya utility Tailwind langsung di JSX. */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Sinkron dengan tema gelap: scrollbar, autofill, dsb. */
+:root {
+  color-scheme: dark;
+}
+
+/* Highlight teks memakai warna aksen */
+::selection {
+  background-color: var(--color-accent);
+  color: var(--color-base);
+}
+
+/* Fokus keyboard yang jelas untuk semua elemen interaktif */
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* Animasi modal ringan (dibungkam otomatis oleh prefers-reduced-motion di atas) */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modal-panel-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 150ms ease-out;
+}
+
+.modal-panel {
+  animation: modal-panel-in 180ms ease-out;
+}
+
+/* Hormati preferensi pengguna yang mematikan animasi (PRD bagian 5). */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  ::before,
+  ::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
