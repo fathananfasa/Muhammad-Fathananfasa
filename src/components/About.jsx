@@ -1,4 +1,5 @@
 import { profile } from '../data/profile'
+import { techSkillGroups, softSkills } from '../data/skills'
 
 function About() {
   return (
@@ -33,6 +34,64 @@ function About() {
             </dd>
           </div>
         </dl>
+
+        {/* Skill & Tools — digabung ke sini (dulu section terpisah).
+            Chip berlogo untuk skill teknis, chip teks untuk kemampuan profesional. */}
+        <div className="mt-16" id="skills">
+          <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted">
+            Skill &amp; Tools
+          </p>
+
+          <dl className="mt-10 max-w-3xl">
+            <div className="grid gap-10 sm:grid-cols-2">
+              {techSkillGroups.map((group) => (
+                <div key={group.title}>
+                  <dt className="text-xs font-medium uppercase tracking-[0.2em] text-muted">
+                    {group.title}
+                  </dt>
+                  <dd className="mt-4">
+                    <ul className="flex flex-wrap gap-2" aria-label={group.title}>
+                      {group.items.map((item) => (
+                        <li
+                          key={item.name}
+                          className="flex items-center gap-2 rounded-full border border-line px-3 py-1.5 text-sm text-muted"
+                        >
+                          <img
+                            src={item.logo}
+                            alt=""
+                            aria-hidden="true"
+                            loading="lazy"
+                            className="h-4 w-4 shrink-0 object-contain"
+                          />
+                          {item.name}
+                        </li>
+                      ))}
+                    </ul>
+                  </dd>
+                </div>
+              ))}
+            </div>
+
+            {/* Kemampuan profesional — chip teks tanpa logo */}
+            <div className="mt-10 border-t border-line pt-6">
+              <dt className="text-xs font-medium uppercase tracking-[0.2em] text-muted">
+                Kemampuan Profesional
+              </dt>
+              <dd className="mt-4">
+                <ul className="flex flex-wrap gap-2" aria-label="Kemampuan Profesional">
+                  {softSkills.map((skill) => (
+                    <li
+                      key={skill}
+                      className="rounded-full border border-line px-3 py-1.5 text-sm text-muted"
+                    >
+                      {skill}
+                    </li>
+                  ))}
+                </ul>
+              </dd>
+            </div>
+          </dl>
+        </div>
       </div>
     </section>
   )

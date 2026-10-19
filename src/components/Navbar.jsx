@@ -5,7 +5,6 @@ const navLinks = [
   { href: '#about', label: 'Tentang' },
   { href: '#projects', label: 'Proyek' },
   { href: '#experience', label: 'Pengalaman' },
-  { href: '#skills', label: 'Skill' },
   { href: '#contact', label: 'Kontak' },
 ]
 
@@ -13,7 +12,7 @@ function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false)
 
   return (
-    <header className="sticky top-0 z-50 border-b border-line bg-base/90 backdrop-blur-md">
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-line bg-base/90 backdrop-blur-md">
       <nav
         aria-label="Navigasi utama"
         className="mx-auto flex h-14 max-w-5xl items-center justify-between px-6"

@@ -4,7 +4,6 @@ import Hero from './components/Hero'
 import About from './components/About'
 import Projects from './components/Projects'
 import Experience from './components/Experience'
-import Skills from './components/Skills'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 
@@ -31,8 +30,9 @@ function App() {
       <div className="orb orb-a" aria-hidden="true" />
       <div className="orb orb-b" aria-hidden="true" />
 
-      {/* Konten dibungkus relative supaya selalu di atas orb */}
-      <div className="relative">
+      {/* Konten dibungkus relative supaya selalu di atas orb.
+          pt-14 mengimbangi navbar yang sekarang fixed. */}
+      <div className="relative pt-14">
         {/* Skip link — muncul saat mendapat fokus keyboard */}
         <a
           href="#main-content"
@@ -48,7 +48,6 @@ function App() {
           <About />
           <Projects />
           <Experience />
-          <Skills />
           <Contact />
         </main>
 
