@@ -1,5 +1,4 @@
 import Navbar from './components/Navbar'
-import SoftAurora from './components/SoftAurora'
 import Hero from './components/Hero'
 import About from './components/About'
 import Projects from './components/Projects'
@@ -7,42 +6,34 @@ import Experience from './components/Experience'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 
+/*
+  Shell "Buku Kerja": background datar, strip punggung buku + garis margin
+  vertikal permanen (desktop saja). Konten bergulir di atasnya.
+*/
 function App() {
   return (
-    <div className="relative min-h-screen overflow-hidden bg-atmosphere bg-base font-sans text-ink antialiased">
-      {/* Aurora — fixed, selalu memenuhi viewport, di belakang semua konten.
-          Konten bergulir di atasnya, band tetap di posisi layar yang sama. */}
-      <div className="fixed inset-0 pointer-events-none" aria-hidden="true">
-        <SoftAurora
-          color1="#166534"
-          color2="#0f766e"
-          spectrum={0}
-          speed={0.3}
-          brightness={0.7}
-          bandHeight={0.65}
-          tilt={-4}
-          bandSpread={0.7}
-          scale={1.5}
-          enableMouseInteraction={false}
-          clickPulse={false}
-        />
-      </div>
+    <div className="min-h-screen bg-base font-sans text-ink antialiased">
+      {/* Strip punggung buku di tepi kiri viewport — murni dekoratif */}
+      <div
+        aria-hidden="true"
+        className="book-spine pointer-events-none fixed inset-y-0 left-0 z-40 hidden w-2.5 bg-surface md:block"
+      />
 
-      {/* Orb dekoratif — murni visual, sembunyikan dari screen reader */}
-      <div className="orb orb-a" aria-hidden="true" />
-      <div className="orb orb-b" aria-hidden="true" />
+      {/* Garis margin vertikal — tempat MarginNote "menggantung" */}
+      <div
+        aria-hidden="true"
+        className="notebook-margin pointer-events-none fixed bottom-0 left-10 top-0 z-40 hidden md:block"
+      />
 
-      {/* Konten dibungkus relative supaya selalu di atas orb.
-          pt-14 mengimbangi navbar yang sekarang fixed. */}
+      {/* Skip link — muncul saat mendapat fokus keyboard */}
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60] focus:rounded-md focus:bg-surface focus:px-4 focus:py-2 focus:text-sm"
+      >
+        Langsung ke konten
+      </a>
+
       <div className="relative pt-14">
-        {/* Skip link — muncul saat mendapat fokus keyboard */}
-        <a
-          href="#main-content"
-          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60] focus:rounded-md focus:bg-surface focus:px-4 focus:py-2 focus:text-sm"
-        >
-          Langsung ke konten
-        </a>
-
         <Navbar />
 
         <main id="main-content" tabIndex={-1}>

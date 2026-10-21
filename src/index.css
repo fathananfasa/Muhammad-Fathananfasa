@@ -31,62 +31,53 @@ html {
 }
 
 /*
-  Atmosfer background: dua orb blur melayang + glow radial statis.
-  Semuanya di belakang konten (pointer-events none), sangat transparan
-  supaya nuansa gelap dan kontras teks tetap terjaga.
+  Atmosfer "Buku Kerja": background datar dengan satu garis margin vertikal
+  dan strip punggung buku di tepi kiri viewport (dua elemen fix di App.jsx,
+  pakai utility Tailwind — perlu CSS hanya untuk detail di bawah).
 */
-@keyframes drift-a {
-  0%,
-  100% {
-    transform: translate3d(0, 0, 0) scale(1);
-  }
-  50% {
-    transform: translate3d(-60px, 40px, 0) scale(1.08);
-  }
+
+/* Strip "punggung buku" — tepi kiri viewport, di bawah konten */
+.book-spine {
+  box-shadow: inset -1px 0 0 var(--color-line);
 }
 
-@keyframes drift-b {
-  0%,
-  100% {
-    transform: translate3d(0, 0, 0) scale(1.05);
-  }
-  50% {
-    transform: translate3d(50px, -50px, 0) scale(0.95);
-  }
+/* Garis margin vertikal — tepat setelah punggung buku */
+.notebook-margin {
+  width: 1px;
+  background-color: var(--color-line);
 }
 
-/* Glow radial statis — nempel di wrapper utama (atas kanan & bawah kiri) */
-.bg-atmosphere {
-  background-image:
-    radial-gradient(60rem 40rem at 70% -10%, rgba(127, 185, 127, 0.07), transparent 60%),
-    radial-gradient(50rem 36rem at 10% 110%, rgba(127, 185, 127, 0.05), transparent 60%);
-}
-
-/* Orb dekoratif: elemen blur besar yang melayang sangat lambat */
-.orb {
+/*
+  "Selotip" di sudut foto yang ditempel: strip semi-transparan memanjang.
+  Rotasinya lewat utility Tailwind per instance (rotate-*).
+*/
+.tape {
   position: absolute;
-  border-radius: 50%;
-  filter: blur(100px);
+  top: -0.9rem;
+  left: 50%;
+  width: 5.5rem;
+  height: 1.75rem;
+  transform: translateX(-50%);
+  background-color: var(--color-muted);
+  opacity: 0.28;
   pointer-events: none;
-  will-change: transform;
 }
 
-.orb-a {
-  top: -160px;
-  right: -120px;
-  width: 560px;
-  height: 560px;
-  background: radial-gradient(circle, rgba(127, 185, 127, 0.16), transparent 70%);
-  animation: drift-a 22s ease-in-out infinite;
+/* Frame foto yang ditempel di halaman: panel surface + garis tipis 1px.
+   Caption tulis di dalam elemen ini, rotasi via utility Tailwind per instance. */
+.photo-frame {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-line);
+  padding: 0.5rem 0.5rem 1rem;
 }
 
-.orb-b {
-  top: 40%;
-  left: -180px;
-  width: 620px;
-  height: 620px;
-  background: radial-gradient(circle, rgba(58, 90, 58, 0.22), transparent 70%);
-  animation: drift-b 30s ease-in-out infinite;
+/* Catatan margin: Fraunces italic kecil, warna teks sekunder */
+.margin-note {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--color-muted);
 }
 
 /* Sinkron dengan tema gelap: scrollbar, autofill, dsb. */
