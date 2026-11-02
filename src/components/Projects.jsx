@@ -10,11 +10,7 @@ function Projects() {
   return (
     <section id="projects" className="scroll-mt-20 border-t border-line">
       <div className="mx-auto max-w-5xl px-6 py-20 md:py-28">
-        <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted">
-          02 — Proyek
-        </p>
-
-        <h2 className="mt-4 font-display text-3xl font-semibold tracking-tight md:text-4xl">
+        <h2 className="font-display text-3xl font-semibold tracking-tight md:text-4xl">
           Proyek Pilihan
         </h2>
 
@@ -35,13 +31,9 @@ function Projects() {
 
       {openProject && (
         <Modal title={openProject.name} onClose={() => setOpenSlug(null)}>
-          <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted">
+          <p className="text-sm text-muted">
             {openProject.context} · {openProject.type}
           </p>
-
-          <h3 className="mt-2 font-display text-2xl font-semibold tracking-tight md:text-3xl">
-            {openProject.name}
-          </h3>
 
           <p className="mt-4 leading-relaxed text-muted">
             {openProject.descriptionId}

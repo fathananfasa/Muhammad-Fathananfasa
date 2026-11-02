@@ -9,11 +9,7 @@ function Experience() {
   return (
     <section id="experience" className="scroll-mt-20 border-t border-line">
       <div className="mx-auto max-w-5xl px-6 py-20 md:py-28">
-        <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted">
-          03 — Pengalaman
-        </p>
-
-        <h2 className="mt-4 font-display text-3xl font-semibold tracking-tight md:text-4xl">
+        <h2 className="font-display text-3xl font-semibold tracking-tight md:text-4xl">
           Pengalaman
         </h2>
 
@@ -64,12 +60,8 @@ function Experience() {
       </div>
 
       {openExp && (
-        <Modal title={`${openExp.position} — ${openExp.company}`} onClose={() => setOpenIndex(null)}>
-          <p className="font-display text-2xl font-semibold tracking-tight md:text-3xl">
-            {openExp.position}
-          </p>
-
-          <p className="mt-2 text-sm">
+        <Modal title={openExp.position} onClose={() => setOpenIndex(null)}>
+          <p className="text-sm">
             {openExp.company}
             <span className="text-muted">
               {' '}

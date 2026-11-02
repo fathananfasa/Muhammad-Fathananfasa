@@ -3,11 +3,11 @@ import { profile } from '../data/profile'
 function Hero() {
   return (
     <section id="top" className="mx-auto max-w-5xl px-6 pb-24 pt-16 md:pb-32 md:pt-24">
-      <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted">
+      <p className="text-sm text-muted">
         {profile.headlineId}
       </p>
 
-      <h1 className="mt-5 font-display text-4xl font-semibold tracking-tight md:text-6xl">
+      <h1 className="mt-3 font-display text-4xl font-semibold tracking-tight md:text-6xl">
         {profile.name}
       </h1>
 

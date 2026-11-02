@@ -10,8 +10,8 @@ import Footer from './components/Footer'
 function App() {
   return (
     <div className="relative min-h-screen overflow-hidden bg-atmosphere bg-base font-sans text-ink antialiased">
-      {/* Aurora — fixed, selalu memenuhi viewport, di belakang semua konten.
-          Konten bergulir di atasnya, band tetap di posisi layar yang sama. */}
+      {/* Atmosfer: SoftAurora (fixed, di belakang konten) + glow radial
+          statis via .bg-atmosphere. Konten bergulir di atasnya. */}
       <div className="fixed inset-0 pointer-events-none" aria-hidden="true">
         <SoftAurora
           color1="#166534"
@@ -28,12 +28,6 @@ function App() {
         />
       </div>
 
-      {/* Orb dekoratif — murni visual, sembunyikan dari screen reader */}
-      <div className="orb orb-a" aria-hidden="true" />
-      <div className="orb orb-b" aria-hidden="true" />
-
-      {/* Konten dibungkus relative supaya selalu di atas orb.
-          pt-14 mengimbangi navbar yang sekarang fixed. */}
       <div className="relative pt-14">
         {/* Skip link — muncul saat mendapat fokus keyboard */}
         <a
