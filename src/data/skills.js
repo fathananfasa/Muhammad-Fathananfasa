@@ -7,6 +7,10 @@
  * Diperbarui (merger ke section Tentang):
  * - `techSkillGroups` berisi item berlogo (logo lokal di public/logos/, tanpa hotlink).
  * - `softSkills` tetap chip teks tanpa logo (logo hanya untuk skill teknis).
+ *
+ * Logo Simple Icons diwarnai monokrom (#9b9e93) agar konsisten dengan tema.
+ * Logo Microsoft tidak lagi tersedia di Simple Icons — diambil dari paket
+ * simple-icons@12 (unpkg) lalu diwarnai ulang.
  */
 
 export const techSkillGroups = [
@@ -43,6 +47,19 @@ export const techSkillGroups = [
       { name: 'Payment Gateway — Midtrans', logo: '/logos/midtrans.svg' },
       { name: 'Layanan Pihak Ketiga — RajaOngkir', logo: '/logos/rajaongkir.webp' },
       { name: 'Binderbyte', logo: '/logos/binderbyte.svg' },
+    ],
+  },
+  {
+    title: 'Tools & Aplikasi',
+    // wide: blok ini melebar setengah + setengah (2 kolom grid) di About.
+    wide: true,
+    items: [
+      { name: 'Microsoft Word', logo: '/logos/microsoftword.svg' },
+      { name: 'Microsoft Excel', logo: '/logos/microsoftexcel.svg' },
+      { name: 'Microsoft PowerPoint', logo: '/logos/microsoftpowerpoint.svg' },
+      { name: 'Google Sheets', logo: '/logos/googlesheets.svg' },
+      { name: 'Figma', logo: '/logos/figma.svg' },
+      { name: 'WordPress', logo: '/logos/wordpress.svg' },
     ],
   },
 ]

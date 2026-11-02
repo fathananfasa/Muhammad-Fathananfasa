@@ -1,5 +1,5 @@
 import { profile } from '../data/profile'
-import { techSkillGroups, softSkills } from '../data/skills'
+import { techSkillGroups } from '../data/skills'
 
 function About() {
   return (
@@ -41,7 +41,10 @@ function About() {
           <dl className="mt-10 max-w-3xl">
             <div className="grid gap-10 sm:grid-cols-2">
               {techSkillGroups.map((group) => (
-                <div key={group.title}>
+                <div
+                  key={group.title}
+                  className={group.wide ? 'sm:col-span-2' : undefined}
+                >
                   <dt className="text-xs font-medium uppercase tracking-[0.2em] text-muted">
                     {group.title}
                   </dt>
@@ -66,25 +69,6 @@ function About() {
                   </dd>
                 </div>
               ))}
-            </div>
-
-            {/* Kemampuan profesional — chip teks tanpa logo */}
-            <div className="mt-10 border-t border-line pt-6">
-              <dt className="text-xs font-medium uppercase tracking-[0.2em] text-muted">
-                Kemampuan Profesional
-              </dt>
-              <dd className="mt-4">
-                <ul className="flex flex-wrap gap-2" aria-label="Kemampuan Profesional">
-                  {softSkills.map((skill) => (
-                    <li
-                      key={skill}
-                      className="rounded-full border border-line px-3 py-1.5 text-sm text-muted"
-                    >
-                      {skill}
-                    </li>
-                  ))}
-                </ul>
-              </dd>
             </div>
           </dl>
         </div>
