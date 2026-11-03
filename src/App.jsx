@@ -6,6 +6,7 @@ import Projects from './components/Projects'
 import Experience from './components/Experience'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
+import { Analytics } from "@vercel/analytics/react"
 
 function App() {
   return (
@@ -49,6 +50,7 @@ function App() {
 
         <Footer />
       </div>
+      <Analytics />
     </div>
   )
 }
